@@ -4,12 +4,39 @@ A Django-based cinema ticket booking system inspired by BookMyShow. Browse movie
 
 ## Features
 
-- 🎬 Browse movies and cinema halls
-- 🎭 View available shows for each theater
-- 💺 Interactive seat selection with real-time availability
-- 👤 User authentication (register, login, logout)
-- 📋 Booking history and profile management
-- ✅ Responsive UI with Django templates
+### 🎬 Movie Browsing
+- Browse all available movies with descriptions
+- View movie details and ratings
+- See all theaters screening each movie
+
+### 🎭 Theater & Show Management
+- Multiple theaters with different capacities
+- Multiple show timings per day
+- Check seat availability in real-time
+
+### 💺 Interactive Seat Selection
+- Visual seat layout with color-coded availability
+- Real-time seat status (available, booked, selected)
+- Multi-seat selection with instant price calculation
+- View seat pricing tiers if applicable
+
+### 👤 User Authentication
+- User registration with email validation
+- Secure login/logout
+- Password reset functionality
+- Profile management and booking history
+
+### 📋 Booking System
+- Complete booking workflow
+- View past and upcoming bookings
+- Booking confirmation and details
+- User dashboard with all reservations
+
+### ✅ Admin Dashboard
+- Manage movies, theaters, and shows
+- Monitor all bookings
+- Update seat availability
+- User management
 
 ## Tech Stack
 
@@ -17,6 +44,36 @@ A Django-based cinema ticket booking system inspired by BookMyShow. Browse movie
 - **Database**: SQLite
 - **Frontend**: HTML, CSS (Django Templates)
 - **Python**: 3.x
+
+## How It Works
+
+### Architecture
+```
+User Interface (HTML Templates)
+         ↓
+Django Views (URLs → Views)
+         ↓
+Models & Database (SQLite)
+         ↓
+Admin Panel & User Authentication
+```
+
+### Database Models
+- **User**: Extended Django user with booking history
+- **Movie**: Movie details (title, genre, duration, poster)
+- **Theater**: Cinema hall information (name, location, capacity)
+- **Show**: Movie screenings (theater, time, date)
+- **Seat**: Individual seats with availability status
+- **Booking**: User reservations with payment info
+
+### User Journey
+1. **Browse** → View all movies on the home page
+2. **Select** → Choose a movie to see available theaters
+3. **Pick Theater** → Select a theater and show time
+4. **Choose Seats** → Click seats to reserve (visual feedback updates instantly)
+5. **Confirm** → Login/register and finalize booking
+6. **Receive** → Booking confirmation with ticket details
+7. **Manage** → View all bookings in user profile
 
 ## Prerequisites
 
@@ -100,10 +157,26 @@ Visit `http://127.0.0.1:8000/` in your browser.
 ## Admin Panel
 
 Access the admin panel at `/admin` with superuser credentials to manage:
-- Movies
-- Theaters
-- Shows
-- Bookings
+- **Movies**: Add, edit, delete movies with descriptions and posters
+- **Theaters**: Create theater locations and define seating capacity
+- **Shows**: Schedule movie screenings at different times
+- **Seats**: Manage seat availability and pricing
+- **Bookings**: View and manage user reservations
+- **Users**: Manage user accounts and permissions
+
+## Troubleshooting
+
+**Issue**: `ModuleNotFoundError: No module named 'django'`
+- **Solution**: Make sure virtual environment is activated and run `pip install -r requirements.txt`
+
+**Issue**: Database errors after first run
+- **Solution**: Run `python manage.py migrate` to apply all migrations
+
+**Issue**: Media files not showing up
+- **Solution**: Ensure media folder exists and `MEDIA_ROOT` is correctly set in settings.py
+
+**Issue**: Static files not loading
+- **Solution**: Run `python manage.py collectstatic` for production
 
 ## Future Enhancements
 
@@ -123,4 +196,15 @@ This project is open source and available under the MIT License.
 
 ## Author
 
-Your Name - [GitHub Profile](https://github.com/YOUR_USERNAME)
+Built as a learning project to understand:
+- Django MVT (Model-View-Template) architecture
+- User authentication and authorization
+- Database modeling for real-world scenarios
+- Form handling and validation
+- Django admin customization
+
+Feel free to reach out with questions or suggestions!
+
+---
+
+**Star ⭐ this repo if you found it helpful!**
