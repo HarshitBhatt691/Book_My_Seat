@@ -141,7 +141,7 @@
       </div>
 
       <div class="row">
-        {% if movies %}
+        {% if page_obj.object_list %}
         {% for movie in page_obj %}
         <div class="col-md-3 col-sm-6 mb-4">
           <a href="{% url 'theater_list' movie.id %}" class="text-decoration-none">
