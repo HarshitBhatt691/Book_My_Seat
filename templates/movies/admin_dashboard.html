@@ -1,0 +1,88 @@
+{% extends 'users/basic.html' %}
+{% block content %}
+<div class='container mt-4'>
+    <h2>Admin Analytics Dashboard</h2>
+    
+    <div class='row mt-4'>
+        <div class='col-md-4'>
+            <div class='card text-white bg-primary mb-3'>
+                <div class='card-header'>Daily Revenue</div>
+                <div class='card-body'>
+                    <h5 class='card-title'>$ {{ daily_revenue }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4'>
+            <div class='card text-white bg-success mb-3'>
+                <div class='card-header'>Weekly Revenue</div>
+                <div class='card-body'>
+                    <h5 class='card-title'>$ {{ weekly_revenue }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4'>
+            <div class='card text-white bg-info mb-3'>
+                <div class='card-header'>Monthly Revenue</div>
+                <div class='card-body'>
+                    <h5 class='card-title'>$ {{ monthly_revenue }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <h4>Most Popular Movies</h4>
+            <ul class='list-group'>
+                {% for movie in popular_movies %}
+                <li class='list-group-item d-flex justify-content-between align-items-center'>
+                    {{ movie.name }}
+                    <span class='badge badge-primary badge-pill'>{{ movie.total_bookings }} bookings</span>
+                </li>
+                {% empty %}
+                <li class='list-group-item'>No data available</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class='col-md-6'>
+            <h4>Busiest Theaters</h4>
+            <ul class='list-group'>
+                {% for theater in busiest_theaters %}
+                <li class='list-group-item d-flex justify-content-between align-items-center'>
+                    {{ theater.name }} - {{ theater.movie.name }}
+                    <span class='badge badge-success badge-pill'>{{ theater.total_bookings }} bookings</span>
+                </li>
+                {% empty %}
+                <li class='list-group-item'>No data available</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <div class='row mt-4'>
+        <div class='col-md-6'>
+            <h4>Peak Booking Hours</h4>
+            <ul class='list-group'>
+                {% for peak in peak_hours %}
+                <li class='list-group-item d-flex justify-content-between align-items-center'>
+                    Hour {{ peak.hour }}
+                    <span class='badge badge-warning badge-pill'>{{ peak.count }} bookings</span>
+                </li>
+                {% empty %}
+                <li class='list-group-item'>No data available</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class='col-md-6'>
+            <h4>Cancellation/Failure Rate</h4>
+            <div class='card bg-light'>
+                <div class='card-body text-center'>
+                    <h1 class='display-4 text-danger'>{{ cancellation_rate }}%</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

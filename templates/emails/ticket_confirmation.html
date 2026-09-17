@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .ticket-container { background-color: #ffffff; border-radius: 8px; padding: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); max-width: 600px; margin: 0 auto; }
+        .header { border-bottom: 2px solid #007bff; padding-bottom: 15px; margin-bottom: 20px; text-align: center; }
+        .details-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .details-table td { padding: 10px; border-bottom: 1px solid #eeeeee; }
+        .label { font-weight: bold; color: #555555; }
+        .footer { margin-top: 25px; text-align: center; font-size: 12px; color: #888888; }
+    </style>
+</head>
+<body>
+    <div class="ticket-container">
+        <div class="header">
+            <h2 style="color: #007bff; margin: 0;">Booking Confirmed!</h2>
+            <p style="margin: 5px 0 0 0; color: #666;">Thank you for booking with BookMySeat</p>
+        </div>
+        
+        <p>Hi <strong>{{ user.username }}</strong>,</p>
+        <p>Your ticket reservation has been successfully processed. Below are your booking details:</p>
+        
+        <table class="details-table">
+            <tr>
+                <td class="label">Movie:</td>
+                <td>{{ movie.name }}</td>
+            </tr>
+            <tr>
+                <td class="label">Theater:</td>
+                <td>{{ theater.name }}</td>
+            </tr>
+            <tr>
+                <td class="label">Seat Numbers:</td>
+                <td><strong>{{ seat_numbers }}</strong></td>
+            </tr>
+            <tr>
+                <td class="label">Booking Reference:</td>
+                <td>#BMS-{{ booking_id }}</td>
+            </tr>
+            <tr>
+                <td class="label">Show Timing:</td>
+                <td>{{ show_time }}</td>
+            </tr>
+        </table>
+        
+        <div class="footer">
+            <p>Please present this digital confirmation at the counter entry layout.</p>
+            <p>&copy; 2026 Cinema Booking System.</p>
+        </div>
+    </div>
+</body>
+</html>
