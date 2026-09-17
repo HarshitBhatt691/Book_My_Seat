@@ -34,7 +34,7 @@ import os
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 # Allow localhost for development, production domain for Vercel
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
