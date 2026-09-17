@@ -19,8 +19,7 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Create logs directory for file logging
-os.makedirs(os.path.join(BASE_DIR, 'logs'), exist_ok=True)
+# (Log directory creation removed for serverless compatibility)
 
 
 # Quick-start development settings - unsuitable for production
@@ -174,15 +173,14 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'file': {
+        'console': {
             'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'email_delivery.log'),
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'movies.utils': {
-            'handlers': ['file'],
+            'handlers': ['console'],
             'level': 'INFO',
             'propagate': True,
         },
